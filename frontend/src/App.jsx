@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
-import { Route, Routes, useSearchParams } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Cart from './pages/Cart/Cart'
 import PlaceOrder from './pages/PLaceOrder/PlaceOrder'
 import Footer from './components/Footer/Footer'
-import LoginPopup from './components/LoginPopup/LoginPopup';
-
+import LoginPopup from './components/LoginPopup/LoginPopup'
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false)
+
   return (
     <>
-      {showLogin ? <LoginPopup /> : <></>}
+      {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
       <div className="app">
         <Navbar setShowLogin={setShowLogin} />
         <Routes>
@@ -22,7 +22,6 @@ const App = () => {
         </Routes>
       </div>
       <Footer />
-
     </>
   )
 }
